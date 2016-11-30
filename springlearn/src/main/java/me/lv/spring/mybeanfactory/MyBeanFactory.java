@@ -1,4 +1,4 @@
-package me.lv.spring.beanfactory;
+package me.lv.spring.mybeanfactory;
 
 import java.io.File;
 import java.io.IOException;

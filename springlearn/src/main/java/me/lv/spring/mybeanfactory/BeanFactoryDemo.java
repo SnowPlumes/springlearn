@@ -1,4 +1,4 @@
-package me.lv.spring.beanfactory;
+package me.lv.spring.mybeanfactory;
 
 public class BeanFactoryDemo {
 	public static void main(String[] args) {

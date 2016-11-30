@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="me.lv.spring.factory.CarBean" factory-bean="carFactory"
+		factory-method="getCar">
+		<constructor-arg name="brand" value="Car1brand"></constructor-arg>
+		<constructor-arg name="model" value="Car1model"></constructor-arg>
+	</bean>
+
+	<bean id="carFactory" class="me.lv.spring.factory.CarFactory" />
+
+	<bean id="car2" class="me.lv.spring.factory.StaticCarFactory"
+		factory-method="getCar">
+		<constructor-arg name="brand" value="Car2bran" />
+		<property name="model" value="Car2model" />
+	</bean>
+
+</beans>
