@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
-	default-autowire="byName" default-lazy-init="true">
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="lifeBean" class="me.lv.spring.impl.LifeBean"
-		init-method="init" destroy-method="close" />
+	<context:annotation-config />
+	<context:component-scan base-package="me.lv.spring.annotation" />
 
-	<bean id="helloWorld" class="me.lv.springbean.HelloWorldBean"
-		abstract="true" >
+	<!-- <bean id="lifeBean" class="me.lv.spring.impl.LifeBean"
+		init-method="init" destroy-method="close" /> -->
+
+	<!-- <bean id="helloWorld" class="me.lv.springbean.HelloWorldBean"
+		abstract="true">
 		<property name="message" value="helloWorld" />
 	</bean>
 
 	<bean id="helloChina" class="me.lv.springbean.HelloChinaBean"
 		parent="helloWorld" init-method="init" destroy-method="destory">
 		<property name="message2" value="hellochina" />
-	</bean>
+	</bean> -->
 
 	<bean id="helloSpring" class="me.lv.spring.springlearn.HelloSpringBean" />
 
