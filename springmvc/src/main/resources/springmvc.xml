@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 配置handler -->
+	<bean id="player" name="/player.action" class="me.lv.springmvc.controller.ItemController" />
+
+	<bean id="player2" class="me.lv.springmvc.controller.ItemController2" />
+
+	<!-- 注解的handler -->
+	<!-- <bean class="me.lv.springmvc.controller.ItemController3" /> -->
+
+	<!-- 扫描controller注解,多个包中间使用半角逗号分隔 -->
+	<context:component-scan base-package="me.lv.springmvc.controller" />
+
+
+	<!-- 处理器映射器 -->
+	<!-- 根据bean的name进行查找Handler将action的url配置在bean的name中 -->
+	<bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+	<!--注解映射器 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+
+	<!-- 简单url映射，集中配置bean的id对于的url -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/player1.action">player</prop>
+				<prop key="/player2.action">player2</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 处理器适配器 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+
+	<!-- 注解的适配器 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+
+	<!-- 视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property> 
+			prefix 和suffix：查找视图页面的前缀和后缀 <property name="prefix" value="/WEB-INF/jsp/" 
+			/> <property name="suffix" value=".jsp" /> -->
+	</bean>
+</beans>
